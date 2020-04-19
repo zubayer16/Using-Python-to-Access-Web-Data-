@@ -1,0 +1,12 @@
+import re
+hand = open("course.txt", "r")  #Saved all the text in course.txt from the link given in Assignment
+
+total = 0
+for line in hand:
+    line = line.rstrip()
+    x = re.findall('[0-9]+', line) # Retunrns all the numbers in a list
+    if len(x) >= 1:
+        for num in x:
+            total += int(num)
+print("Sum : " +str(total))
+
