@@ -1,0 +1,19 @@
+import urllib.request, urllib.parse, urllib.error
+import xml.etree.ElementTree as ET
+
+url = input("Enter location: ")
+print("Retrieving " + url)
+
+xml = urllib.request.urlopen(url).read()               #For loading file from the web
+print("Retrieved: " + str(len(xml)) + " characters")
+
+tree = ET.fromstring(xml)
+counts = tree.findall('.//count')
+print("Counts : " + str(len(counts)))
+
+total = 0
+for count in counts:
+    total += int(count.text)                           #Have to cast string count to integer
+    
+print("Sum : " + str(total))
+
